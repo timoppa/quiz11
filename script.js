@@ -57,7 +57,6 @@ const questions = [
     ],
     "multiple": false
   },
-  const questions = [
   {
     "question": "For this question, refer to the TerramEarth case study. TerramEarth's CTO wants to use the raw data from connected vehicles to help identify approximately when a vehicle in the field will have a catastrophic failure.\nYou want to allow analysts to centrally query the vehicle data.\nWhich architecture should you recommend?",
     "options": [
