@@ -77,7 +77,20 @@ function loadQuestion() {
   nextBtn.textContent = "Submit";
 
   const q = questions[currentQuestion];
-  questionEl.textContent = q.question;
+  // break the question into lines, render any image-URL as an <img>
+  const html = q.question
+    .split('\n')
+    .map(line => {
+      const m = line.trim().match(/(https?:\/\/\S+\.(?:png|jpe?g|gif|webp))/i);
+      if (m) {
+        return `<img src="${m[1]}" alt="Question image" style="max-width:100%;height:auto;margin:12px 0;">`;
+      }
+      // otherwise escape & wrap in a paragraph
+      return `<p>${line.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>`;
+    })
+    .join('');
+  questionEl.innerHTML = html;
+
   optionsEl.innerHTML    = "";
 
   const shuffled = shuffleArray([...q.options]);
