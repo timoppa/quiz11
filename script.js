@@ -57,6 +57,21 @@ const questions = [
     ],
     "multiple": false
   },
+  const questions = [
+  {
+    "question": "For this question, refer to the TerramEarth case study. TerramEarth's CTO wants to use the raw data from connected vehicles to help identify approximately when a vehicle in the field will have a catastrophic failure.\nYou want to allow analysts to centrally query the vehicle data.\nWhich architecture should you recommend?",
+    "options": [
+      "https://www.examtopics.com/assets/media/exam-media/04339/0002600001.png",
+      "https://www.examtopics.com/assets/media/exam-media/04339/0002700001.png",
+      "https://www.examtopics.com/assets/media/exam-media/04339/0002800001.png",
+      "https://www.examtopics.com/assets/media/exam-media/04339/0002900001.png"
+    ],
+    "answer": [
+      "https://www.examtopics.com/assets/media/exam-media/04339/0002600001.png"
+    ],
+    "multiple": false,
+    "explanation": "Load balancer -> GCE -> Pub/Sub -> Dataflow -> BigQuery -> Analysts. This represents a scalable data pipeline where raw data is streamed to BigQuery for centralized querying. This fits the use case of enabling predictive analysis on a global scale."
+  },
 ];
 
 questions.sort(() => Math.random() - 0.5);
