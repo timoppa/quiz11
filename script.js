@@ -4,82 +4,32 @@
 // ─── Question Data ─────────────────────────────────────────────────────────
 const questions = [
   {
-    "question": "For this question, refer to the Helicopter Racing League (HRL) case study. Your team is in charge of creating a payment card data vault for card numbers used to bill tens of thousands of viewers, merchandise consumers, and season ticket holders. You need to implement a custom card tokenization service that meets the following requirements:\n* It must provide low latency at minimal cost.\n* It must be able to identify duplicate credit cards and must not store plaintext card numbers.\n* It should support annual key rotation.\n\nWhich storage approach should you adopt for your tokenization service?",
+    "question": "Your company's user-feedback portal comprises a standard LAMP stack replicated across two zones. It is deployed in the us-central1 region and uses autoscaled managed instance groups on all layers, except the database. Currently, only a small group of select customers have access to the portal. The portal meets a 99,99% availability SLA under these conditions. However next quarter, your company will be making the portal available to all users, including unauthenticated users. You need to develop a resiliency testing strategy to ensure the system maintains the SLA once they introduce additional user load.\n\nWhat should you do?",
     "options": [
-      "Store the card data in Secret Manager after running a query to identify duplicates.",
-      "Encrypt the card data with a deterministic algorithm stored in Firestore using Datastore mode.",
-      "Encrypt the card data with a deterministic algorithm and shard it across multiple Memorystore instances.",
-      "Use column-level encryption to store the data in Cloud SQL."
+      "Capture existing users input, and replay captured user load until autoscale is triggered on all layers. At the same time, terminate all resources in one of the zones",
+      "Create synthetic random user input, replay synthetic load until autoscale logic is triggered on at least one layer, and introduce \u05d2\u20acchaos\u05d2\u20ac to the system by terminating random resources on both zones",
+      "Expose the new system to a larger group of users, and increase group size each day until autoscale logic is triggered on all layers. At the same time, terminate random resources on both zones",
+      "Capture existing users input, and replay captured user load until resource utilization crosses 80%. Also, derive estimated number of users based on existing user's usage of the app, and deploy enough resources to handle 200% of expected load"
     ],
     "answer": [
-      "Encrypt the card data with a deterministic algorithm stored in Firestore using Datastore mode."
+      "Create synthetic random user input, replay synthetic load until autoscale logic is triggered on at least one layer, and introduce \u05d2\u20acchaos\u05d2\u20ac to the system by terminating random resources on both zones"
     ],
     "multiple": false
   },
   {
-    "question": "Question\nFor this question, refer to the Helicopter Racing League (HRL) case study. Recently HRL started a new regional racing league in Cape Town, South Africa. In an effort to give customers in Cape Town a better user experience, HRL has partnered with the Content Delivery Network provider, Fastly. HRL needs to allow traffic coming from all of the Fastly IP address ranges into their Virtual Private Cloud network (VPC network). You are a member of the HRL security team and you need to configure the update that will allow only the Fastly IP address ranges through the External HTTP(S) load balancer. Which command should you use?",
+    "question": "One of the developers on your team deployed their application in Google Container Engine with the Dockerfile below. They report that their application deployments are taking too long.\n\nhttps://www.examtopics.com/assets/media/exam-media/04339/0008300001.png\n\nYou want to optimize this Dockerfile for faster deployment times without adversely affecting the app's functionality.\n\nWhich two actions should you take? (Choose two.)",
     "options": [
-      "gcloud compute security-policies rules update 1000 \\\n-- security-policy from-fastly \\ \n-- src-ip-ranges * \\\n-- action \"allow\"",
-      "gcloud firewall rules update sourceiplist-fastly \\\n-- priority 1000 \\ \n-- allow tcp:443",
-      "gcloud firewall rules update hlr-policies \\\n-- priority 1000 \\ \n-- target-tags=sourceiplist-fastly \\\n-- allow tcp:443",
-      "gcloud compute security-policies rules update 1000 \\\n-- security-policy hlr-policy \\ \n-- expression \"evaluatePreconfiguredExpr ('sourceiplist-fastly')\" \\\n-- action \"allow\""
+      "Remove Python after running pip",
+      "Remove dependencies from requirements.txt",
+      "Use a slimmed-down base image like Alpine Linux",
+      "Use larger machine types for your Google Container Engine node pools",
+      "Copy the source after he package dependencies (Python and pip) are installed"
     ],
     "answer": [
-      "gcloud compute security-policies rules update 1000 \\\n-- security-policy from-fastly \\ \n-- src-ip-ranges * \\\n-- action \"allow\""
+      "Use a slimmed-down base image like Alpine Linux",
+      "Copy the source after he package dependencies (Python and pip) are installed"
     ],
-    "multiple": false
-  },
-  {
-    "question": "For this question, refer to the Helicopter Racing League (HRL) case study. The HRL development team releases a new version of their predictive capability application every Tuesday evening at 3 a.m. UTC to a repository. The security team at HRL has developed an in-house penetration test Cloud Function called\nAirwolf. The security team wants to run Airwolf against the predictive capability application as soon as it is released every Tuesday. You need to set up Airwolf to run at the recurring weekly cadence. \n\nWhat should you do?",
-    "options": [
-      "Set up Cloud Tasks and a Cloud Storage bucket that triggers a Cloud Function.",
-      "Set up a Cloud Logging sink and a Cloud Storage bucket that triggers a Cloud Function.",
-      "Configure the deployment job to notify a Pub/Sub queue that triggers a Cloud Function.",
-      "Set up Identity and Access Management (IAM) and Confidential Computing to trigger a Cloud Function."
-    ],
-    "answer": [
-      "Configure the deployment job to notify a Pub/Sub queue that triggers a Cloud Function."
-    ],
-    "multiple": false
-  },
-  {
-    "question": "Question\nFor this question, refer to the Helicopter Racing League (HRL) case study. HRL wants better prediction accuracy from their ML prediction models. They want you to use Google's AI Platform so HRL can understand and interpret the predictions. \n\nWhat should you do?",
-    "options": [
-      "Use Explainable AI.",
-      "Use Vision AI.",
-      "Use Google Cloud's operations suite.",
-      "Use Jupyter Notebooks."
-    ],
-    "answer": [
-      "Use Explainable AI."
-    ],
-    "multiple": false
-  },
-  {
-    "question": "For this question, refer to the Helicopter Racing League (HRL) case study. HRL is looking for a cost-effective approach for storing their race data such as telemetry. They want to keep all historical records, train models using only the previous season's data, and plan for data growth in terms of volume and information collected. You need to propose a data solution. \n\nConsidering HRL business requirements and the goals expressed by CEO S. Hawke, what should you do?",
-    "options": [
-      "Use Firestore for its scalable and flexible document-based database. Use collections to aggregate race data by season and event.",
-      "Use Cloud Spanner for its scalability and ability to version schemas with zero downtime. Split race data using season as a primary key.",
-      "Use BigQuery for its scalability and ability to add columns to a schema. Partition race data based on season.",
-      "Use Cloud SQL for its ability to automatically manage storage increases and compatibility with MySQL. Use separate database instances for each season."
-    ],
-    "answer": [
-      "Use BigQuery for its scalability and ability to add columns to a schema. Partition race data based on season."
-    ],
-    "multiple": false
-  },
-  {
-    "question": "For this question, refer to the Helicopter Racing League (HRL) case study. A recent finance audit of cloud infrastructure noted an exceptionally high number of\nCompute Engine instances are allocated to do video encoding and transcoding. You suspect that these Virtual Machines are zombie machines that were not deleted after their workloads completed. You need to quickly get a list of which VM instances are idle. \n\nWhat should you do?",
-    "options": [
-      "Log into each Compute Engine instance and collect disk, CPU, memory, and network usage statistics for analysis.",
-      "Use the gcloud compute instances list to list the virtual machine instances that have the idle: true label set.",
-      "Use the gcloud recommender command to list the idle virtual machine instances.",
-      "From the Google Console, identify which Compute Engine instances in the managed instance groups are no longer responding to health check probes."
-    ],
-    "answer": [
-      "Use the gcloud recommender command to list the idle virtual machine instances."
-    ],
-    "multiple": false
+    "multiple": true
   },
 ];
 
